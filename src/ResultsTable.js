@@ -25,12 +25,12 @@ function ResultsTable({ data }) {
     <div className="my-4">
       <h2 className="text-xl font-bold mb-2">Resultados</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300">
-          <thead>
+        <table className="table-auto min-w-full bg-white">
+          <thead className="bg-cyan-800 text-lg text-white">
             <tr>
               <th className="py-2 px-4 border-b">ID Certificado</th>
               <th className="py-2 px-4 border-b">Nombre</th>
-              <th className="py-2 px-4 border-b">Año</th>
+              <th className="py-2 px-4 border-b">A&ntilde;o</th>
               <th className="py-2 px-4 border-b">Fecha de Inicio</th>
               <th className="py-2 px-4 border-b">Cantidad de Días</th>
               <th className="py-2 px-4 border-b">Estado</th>
