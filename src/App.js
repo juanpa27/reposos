@@ -7,7 +7,7 @@ function App() {
   const [userData, setUserData] = useState(null);
   
   const generateToken = async () => {
-    const tokenUrl = 'http://10.20.23.88:8080/WsCertificadoReposo/user';
+    const tokenUrl = 'https://servicios.ips.gov.py/desa/WsCertificadoReposo/user';
     const credentials = {
       user: 'ips',
       password: '123456',
@@ -40,7 +40,7 @@ function App() {
       const token = await generateToken();
 
       // Aquí realizarás la consulta a la API con el número de cédula y el token
-      const apiUrl = `http://10.20.23.88:8080/WsCertificadoReposo/get/${cedula}`;
+      const apiUrl = `https://servicios.ips.gov.py/desa/WsCertificadoReposo/get/${cedula}`;
       const apiHeaders = {
         Authorization: `${token}`,
       };
@@ -55,7 +55,7 @@ function App() {
 
       const data = await response.json();
       setUserData(data);
-      console.log(data);
+      //console.log(data);
     } catch (error) {
       console.error('Error handling query:', error);
     }
