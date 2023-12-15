@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import Header from './Header.js'; 
 import QueryForm from './QueryForm';
 import ResultsTable  from './ResultsTable';
+import config from './config';
+
 
 function App() { 
   const [userData, setUserData] = useState(null);
   
   const generateToken = async () => {
-    const tokenUrl = 'https://servicios.ips.gov.py/desa/WsCertificadoReposo/user';
+    const tokenUrl = config.tokenUrl+'/user';
     const credentials = {
-      user: 'ips',
-      password: '123456',
+      user: config.credentials.user,
+      password: config.credentials.password,
     };
 
     try {
@@ -40,10 +42,10 @@ function App() {
       const token = await generateToken();
 
       // Aquí realizarás la consulta a la API con el número de cédula y el token
-      const apiUrl = `https://servicios.ips.gov.py/desa/WsCertificadoReposo/get/${cedula}`;
+      const apiUrl = config.tokenUrl+`/get/${cedula}`;
       const apiHeaders = {
         Authorization: `${token}`,
-      };
+      }; 
 
       const response = await fetch(apiUrl, {
         headers: apiHeaders,

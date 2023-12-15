@@ -10,6 +10,8 @@
 
 # production
 /build
+# Ignorar archivos de configuración en la carpeta src
+src/config.js
 
 # misc
 .DS_Store
