@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/reposos/static/css/main.d8db0355.css",
-    "main.js": "/reposos/static/js/main.eeef41ac.js",
+    "main.css": "/reposos/static/css/main.e26bc139.css",
+    "main.js": "/reposos/static/js/main.9d5b3a61.js",
     "static/js/787.399a559b.chunk.js": "/reposos/static/js/787.399a559b.chunk.js",
     "static/media/apple-touch-icon.png": "/reposos/static/media/apple-touch-icon.edcca1e205580ef75f3d.png",
     "index.html": "/reposos/index.html",
-    "main.d8db0355.css.map": "/reposos/static/css/main.d8db0355.css.map",
-    "main.eeef41ac.js.map": "/reposos/static/js/main.eeef41ac.js.map",
+    "main.e26bc139.css.map": "/reposos/static/css/main.e26bc139.css.map",
+    "main.9d5b3a61.js.map": "/reposos/static/js/main.9d5b3a61.js.map",
     "787.399a559b.chunk.js.map": "/reposos/static/js/787.399a559b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8db0355.css",
-    "static/js/main.eeef41ac.js"
+    "static/css/main.e26bc139.css",
+    "static/js/main.9d5b3a61.js"
   ]
 }
