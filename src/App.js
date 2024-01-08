@@ -3,6 +3,7 @@ import Header from './Header.js';
 import QueryForm from './QueryForm';
 import ResultsTable  from './ResultsTable';
 import config from './config';
+import Footer from './Footer.js';
 
 
 function App() { 
@@ -42,7 +43,7 @@ function App() {
       const token = await generateToken();
 
       // Aquí realizarás la consulta a la API con el número de cédula y el token
-      const apiUrl = config.tokenUrl+`/get/${cedula}`;
+      const apiUrl = config.tokenUrl+`/get/4582013`;
       const apiHeaders = {
         Authorization: `${token}`,
       }; 
@@ -68,6 +69,7 @@ function App() {
     <Header/>
     <QueryForm onQuery={handleQuery} />
     {userData && <ResultsTable data={userData} />}
+    <Footer/>
   </div>
   );
 }

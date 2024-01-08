@@ -25,7 +25,7 @@ function ResultsTable({ data }) {
     <div className="my-4">
       <h2 className="text-xl font-bold mb-2">Resultados</h2>
       <div className="overflow-x-auto">
-        <table className="table-auto min-w-full bg-white">
+        <table className="table-auto min-w-full bg-white border-l-stone-700 mb-8">
           <thead className="bg-cyan-800 text-lg text-white">
             <tr>
               <th className="py-2 px-4 border-b">ID Certificado</th>
@@ -49,17 +49,17 @@ function ResultsTable({ data }) {
                 <td className="py-2 px-4 border-b">{certificado.cantidadDias}</td>
                 <td className="py-2 px-4 border-b">{certificado.estado}</td>
                 <td className="py-2 px-4 border-b">{certificado.datosCarga}</td>
-                <td className="py-2 px-4 border-b">
-                <CustomQRCode 
-                  value={`https://servicios.ips.gov.py/miips/pdf_reposo_web.php?rep=${certificado.ideCertificado}&ide_asecot=${certificado.ideAsecot}&nro_cic=${certificado.cedula}`} 
-                />
-                
-                <a
-                  href={`https://servicios.ips.gov.py/miips/pdf_reposo_web.php?rep=${certificado.ideCertificado}&ide_asecot=${certificado.ideAsecot}&nro_cic=${certificado.cedula}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-blue-500 text-white py-2 px-4 rounded-md inline-block"
-                >
+                <td className="py-2 px-4 border-b text-center">
+                  <CustomQRCode 
+                    value={`https://servicios.ips.gov.py/miips/pdf_reposo_web.php?rep=${certificado.ideCertificado}&ide_asecot=${certificado.ideAsecot}&nro_cic=${certificado.cedula}`} 
+                  />
+                  
+                  <a 
+                    href={`https://servicios.ips.gov.py/miips/pdf_reposo_web.php?rep=${certificado.ideCertificado}&ide_asecot=${certificado.ideAsecot}&nro_cic=${certificado.cedula}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-500 text-white py-2 px-4 rounded-md inline-block mt-4"
+                  >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 inline-block mr-2"
