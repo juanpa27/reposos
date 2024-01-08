@@ -22,11 +22,11 @@ function CustomQRCode({ value }) {
 function ResultsTable({ data }) {
   
   return (
-    <div className="my-4">
-      <h2 className="text-xl font-bold mb-2">Resultados</h2>
-      <div className="overflow-x-auto">
-        <table className="table-auto min-w-full bg-white border-l-stone-700 mb-8">
-          <thead className="bg-cyan-800 text-lg text-white">
+    <div className="mx-6 my-7 mb-7">
+      <h2 className="text-1xl font-bold mb-2">Resultado(s)</h2>
+      <div className="overflow-x-auto sm:rounded-lg lg:rounded-lg md:rounded-lg">
+        <table className="table-auto bg-white min-w-full">
+          <thead className="bg-gray-500 text-lg uppercase text-white">
             <tr>
               <th className="py-2 px-4 border-b">ID Certificado</th>
               <th className="py-2 px-4 border-b">Nombre</th>
@@ -41,7 +41,7 @@ function ResultsTable({ data }) {
           </thead>
           <tbody>
             {data.certificados.map((certificado) => (
-              <tr key={certificado.id}>
+              <tr key={certificado.id} class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-600/10">
                 <td className="py-2 px-4 border-b">{certificado.ideCertificado}</td>
                 <td className="py-2 px-4 border-b">{certificado.nombre}</td>
                 <td className="py-2 px-4 border-b">{certificado.anho}</td>
@@ -60,19 +60,7 @@ function ResultsTable({ data }) {
                     rel="noopener noreferrer"
                     className="bg-blue-500 text-white py-2 px-4 rounded-md inline-block mt-4"
                   >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 inline-block mr-2"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M0 2a2 2 0 012-2h16a2 2 0 012 2v16a2 2 0 01-2 2H2a2 2 0 01-2-2V2zm6 15a2 2 0 110-4 2 2 0 010 4zm5-4a2 2 0 100-4 2 2 0 000 4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  PDF
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-12" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4" /><path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6" /><path d="M17 18h2" /><path d="M20 15h-3v6" /><path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z" /></svg>
                 </a>
               </td>
               </tr>

@@ -4,10 +4,15 @@ import QueryForm from './QueryForm';
 import ResultsTable  from './ResultsTable';
 import config from './config';
 import Footer from './Footer.js';
+import Loading from './Loading.js';
 
 
 function App() { 
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+
+
   
   const generateToken = async () => {
     const tokenUrl = config.tokenUrl+'/user';
@@ -39,6 +44,7 @@ function App() {
   };
 
   const handleQuery = async (cedula) => {
+    setLoading(true);
     try {
       const token = await generateToken();
 
@@ -57,6 +63,7 @@ function App() {
       }
 
       const data = await response.json();
+      setLoading(false);
       setUserData(data);
       //console.log(data);
     } catch (error) {
@@ -67,8 +74,11 @@ function App() {
   return (
     <div>
     <Header/>
-    <QueryForm onQuery={handleQuery} />
-    {userData && <ResultsTable data={userData} />}
+    <section className="mb-20">
+      <QueryForm onQuery={handleQuery} />
+      {loading && <Loading />}
+      {userData && <ResultsTable data={userData} />}
+    </section>
     <Footer/>
   </div>
   );
