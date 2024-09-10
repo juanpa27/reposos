@@ -2,85 +2,89 @@ import React, { useState } from 'react';
 import Header from './Header.js'; 
 import QueryForm from './QueryForm';
 import ResultsTable  from './ResultsTable';
-import config from './config';
 import Footer from './Footer.js';
 import Loading from './Loading.js';
+import SkeletonTable from './SkeletonTable';
 
+const simulateFetchCertificados = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        {
+          ideCertificado: 55059,
+          nombre: "BELLENZIER VERA JUAN PABLO",
+          anho: 2023,
+          fechaInicio: "05.08.2023",
+          cantidadDias: 3,
+          estado: "Pendiente de verificación médica en: SECCION SALUD LABORAL",
+          datosCarga: "Registrado en: SECCION SALUD LABORAL en fecha: 08/08/2023",
+          cedula: 4582013,
+          ideAsecot: 1797530
+        },
+        {
+          ideCertificado: 43731,
+          nombre: "BELLENZIER VERA JUAN PABLO",
+          anho: 2022,
+          fechaInicio: "10.07.2022",
+          cantidadDias: 5,
+          estado: "Pendiente de verificación médica en: SECCION SALUD LABORAL",
+          datosCarga: "Registrado en: SECCION SALUD LABORAL en fecha: 13/07/2022",
+          cedula: 4582013,
+          ideAsecot: 1797530
+        },
+        {
+          ideCertificado: 39956,
+          nombre: "BELLENZIER VERA JUAN PABLO",
+          anho: 2022,
+          fechaInicio: "27.06.2022",
+          cantidadDias: 3,
+          estado: "Pendiente de verificación médica en: SECCION SALUD LABORAL",
+          datosCarga: "Registrado en: SECCION SALUD LABORAL en fecha: 29/06/2022",
+          cedula: 4582013,
+          ideAsecot: 1797530
+        },
+        {
+          ideCertificado: 48722,
+          nombre: "BELLENZIER VERA JUAN PABLO",
+          anho: 2021,
+          fechaInicio: "16.11.2021",
+          cantidadDias: 2,
+          estado: "Pendiente de verificación médica en: SECCION SALUD LABORAL",
+          datosCarga: "Registrado en: SECCION SALUD LABORAL en fecha: 18/11/2021",
+          cedula: 4582013,
+          ideAsecot: 1797530
+        }
+      ]);
+    }, 1000); // Simula un retardo de 1 segundo
+  });
+};
 
 function App() { 
-  const [userData, setUserData] = useState(null);
+  const [certificados, setCertificados] = useState(null);
   const [loading, setLoading] = useState(false);
 
-
-
-  
-  const generateToken = async () => {
-    const tokenUrl = config.tokenUrl+'/user';
-    const credentials = {
-      user: config.credentials.user,
-      password: config.credentials.password,
-    };
-
-    try {
-      const response = await fetch(tokenUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to generate token');
-      }
-
-      const tokenData = await response.json();
-      return tokenData.token; // Assuming the token is returned in the response
-      
-    } catch (error) {
-      console.error('Error generating token:', error);
-      throw error;
-    }
-  };
-
-  const handleQuery = async (cedula) => {
+  const handleQuery = async () => {
     setLoading(true);
     try {
-      const token = await generateToken();
-
-      // Aquí realizarás la consulta a la API con el número de cédula y el token
-      const apiUrl = config.tokenUrl+`/get/4582013`;
-      const apiHeaders = {
-        Authorization: `${token}`,
-      }; 
-
-      const response = await fetch(apiUrl, {
-        headers: apiHeaders,
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data');
-      }
-
-      const data = await response.json();
-      setLoading(false);
-      setUserData(data);
-      //console.log(data);
+      const data = await simulateFetchCertificados();
+      setCertificados(data);
     } catch (error) {
       console.error('Error handling query:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-    <Header/>
-    <section className="mb-20">
-      <QueryForm onQuery={handleQuery} />
-      {loading && <Loading />}
-      {userData && <ResultsTable data={userData} />}
-    </section>
-    <Footer/>
-  </div>
+      <Header />
+      <section className="mb-20">
+        <QueryForm onQuery={handleQuery} />
+        {loading && <Loading />}
+        {certificados && <ResultsTable data={certificados} />}
+      </section>
+      <Footer />
+    </div>
   );
 }
 

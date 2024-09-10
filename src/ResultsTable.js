@@ -1,6 +1,7 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
 
+
 function CustomQRCode({ value }) {
   return (
     <QRCode
@@ -40,7 +41,7 @@ function ResultsTable({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.certificados.map((certificado) => (
+            {data.map((certificado) => (
               <tr key={certificado.id} class="bg-white border-b hover:bg-gray-50 dark:hover:bg-gray-600/10">
                 <td className="py-2 px-4 border-b">{certificado.ideCertificado}</td>
                 <td className="py-2 px-4 border-b">{certificado.nombre}</td>
